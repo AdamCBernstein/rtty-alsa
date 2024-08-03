@@ -37,6 +37,7 @@ static int period_event = 0;                            /* produce poll event af
 
 #define BAUD_DELAY_45 22    /* 22ms = 45 baud, 60WPM */
 #define BAUD_DELAY_50 20    /* 20ms = 50 baud, 66WPM */
+#define BAUD_DELAY_57 18    /* 18ms = 56.9 baud, 75WPM  */
 #define BAUD_DELAY_74 13    /* 13ms = 74 baud, 100WPM */
 
 #define COLUMN_MAX 76
@@ -156,6 +157,9 @@ void rtty_conf_init(rtty_conf *ctx)
       case 66:
         ctx->bit_delay = BAUD_DELAY_50;
         break;
+      case 75:
+        ctx->bit_delay = BAUD_DELAY_57;
+        break;
       case 100:
         ctx->bit_delay = BAUD_DELAY_74;
         break;
@@ -205,7 +209,7 @@ Usage(void) {
             "     --input-file\n"
             "     --test-data\n"
             "     --keyboard\n"
-            "     --wpm 60 | 66 | 100\n"
+            "     --wpm 60 | 66 | 75 | 100\n"
             "     --freq 500-3000\n"
             "     --shift 170 | 425 | 850\n"
             );
